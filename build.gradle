@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+}
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+tasks.register('checkFile') {
+    doLast {
+        def file = file('data/src/main/resources/weatherKey.txt')
+        if (file.exists()) {
+            println "File exists!"
+        } else {
+            println "File does not exist!"
+        }
+    }
+}
+
+tasks.register('buildProject') {
+    dependsOn ':main:build', ':data:build', ':text:build'
+    doLast {
+        println "Project built successfully!"
+    }
+}

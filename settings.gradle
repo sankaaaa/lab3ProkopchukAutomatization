@@ -1,0 +1,5 @@
+rootProject.name = 'lab3ProkopchukAutomatization'
+include 'data'
+include 'text'
+include 'main'
+
